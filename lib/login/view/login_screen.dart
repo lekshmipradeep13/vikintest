@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vikn_test/login/controller/login_cntrl.dart';
+import 'package:vikn_test/widget/error%20_snackbar_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -115,8 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Color(0xff0A9EF3)),
                   ),
                   SizedBox(height: 35),
-                  GestureDetector(
-                    onTap: () {
+                value.isLoading ? CircularProgressIndicator() : CupertinoButton(
+                    minSize: 0,
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+
+                      
                       Provider.of<LoginController>(context, listen: false).login(
                           value.usernameCntrl.text,
                           value.passwordCntrl.text,
@@ -172,3 +177,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
